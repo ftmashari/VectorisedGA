@@ -18,7 +18,7 @@ def fitness(route):
 
 def createinitialpopulation(pop, initialroute):
     length = len(initialroute)
-    initpop = pd.DataFrame(pd.np.empty((pop, length)) * pd.np.nan)
+    initpop = pd.DataFrame(np.empty((pop, length)) * np.nan)
     initpop = initpop.apply(lambda _: random.sample(initialroute, length), axis=1)
     initpop.reset_index(inplace=True)
     initpop.drop('index', axis=1, inplace=True)
@@ -102,7 +102,7 @@ def main():
     bestdistances, best = genetic(1000, 100, 0.05, 0.8)
     best = best.transpose().append([0])
     outpath = 'path.csv'
-    best.to_csv(outpath, index=False, mode='a')
+    best.to_csv(outpath, index=False)
     visualise(pd.Series(bestdistances))
 
 
